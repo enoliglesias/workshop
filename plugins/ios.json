@@ -15,6 +15,20 @@
                         {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "framework": {
+                "parents": {
+                    "AudioToolbox.framework": [
+                        {
+                            "xml": true,
+                            "count": 1
                         }
                     ]
                 }
@@ -29,6 +43,9 @@
             "PACKAGE_NAME": "com.enol.workshop"
         },
         "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.enol.workshop"
+        },
+        "org.apache.cordova.dialogs": {
             "PACKAGE_NAME": "com.enol.workshop"
         }
     },
