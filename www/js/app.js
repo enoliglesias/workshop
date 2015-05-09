@@ -5,11 +5,21 @@
     var service = new EmployeeService();
     HomeView.prototype.template = Handlebars.compile($("#home-tpl").html());
     EmployeeListView.prototype.template = Handlebars.compile($("#employee-list-tpl").html());
+    EmployeeView.prototype.template = Handlebars.compile($("#employee-tpl").html());
+
     service.initialize().done(function () {
-      $('body').html(new HomeView(service).render().$el);
+      router.addRoute('', function() {
+          $('body').html(new HomeView(service).render().$el);
+      });
+
+      router.addRoute('employees/:id', function(id) {
+          service.findById(parseInt(id)).done(function(employee) {
+              $('body').html(new EmployeeView(employee).render().$el);
+          });
+      });
+
+      router.start();
     });
-
-
     /* --------------------------------- Event Registration -------------------------------- */
     document.addEventListener('deviceready', function () {
       if (navigator.notification) { // Override default HTML alert with native dialog
